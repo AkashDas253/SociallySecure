@@ -37,6 +37,8 @@ SociallySecure is a full-stack web application designed to detect sensitive data
 
 ## Installation
 
+### Manual Setup
+
 To set up the project locally, follow these steps:
 
 1. **Clone the repository:**
@@ -56,17 +58,67 @@ To set up the project locally, follow these steps:
    pip install -r requirements.txt
    ```
 
-4. **Run migrations:**
+4. **Create a `.env` file in the root directory:**
+   ```bash
+   touch .env
+   ```
+
+5. **Add the following environment variables to
+
+ the
+
+ `.env` file:**
+   ```
+   SECRET_KEY=your-generated-secret-key
+   DEBUG=True
+   ENCRYPTION_KEY=your-generated-encryption-key
+   ```
+
+6. **Run migrations:**
    ```bash
    python manage.py migrate
    ```
 
-5. **Start the server:**
+7. **Start the server:**
    ```bash
    python manage.py runserver
    ```
 
-6. **Open your browser and go to** `http://127.0.0.1:8000/`.
+8. **Open your browser and go to** `http://127.0.0.1:8000/`.
+<!-- 
+### Docker Setup
+
+To build and run the project using Docker, follow these steps:
+
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/AkashDas253/SociallySecure.git
+   cd SociallySecure
+   ```
+
+2. **Create a `.env` file in the root directory:**
+   ```bash
+   touch .env
+   ```
+
+3. **Add the following environment variables to the `.env` file:**
+   ```
+   SECRET_KEY=your-generated-secret-key
+   DEBUG=True
+   ENCRYPTION_KEY=your-generated-encryption-key
+   ```
+
+4. **Build the Docker image:**
+   ```bash
+   docker build -t sociallysecure .
+   ```
+
+5. **Run the Docker container:**
+   ```bash
+   docker run -d -p 8000:8000 --env-file .env sociallysecure
+   ```
+
+6. **Open your browser and go to** `http://127.0.0.1:8000/`. -->
 
 ## Usage
 
@@ -78,11 +130,14 @@ To set up the project locally, follow these steps:
 
 Contributions are welcome! Please feel free to submit a pull request or open an issue.
 
-## License
+<!-- ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details. -->
 
 ## Acknowledgments
 
 - Special thanks to the developers of [Tesseract OCR](https://github.com/tesseract-ocr/tesseract) for their outstanding OCR library.
 - Thanks to [Django](https://www.djangoproject.com/) for providing a robust web framework.
+
+
+
