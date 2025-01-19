@@ -1,6 +1,3 @@
-Here’s an updated version of the `README.md` with EasyOCR integration and the support for scanning documents to find written text, comparing with previously saved data for registered and logged-in users:
-
-```markdown
 # SociallySecure
 
 SociallySecure is a full-stack web application designed to detect sensitive data in images, preventing accidental uploads to social media. The application utilizes Optical Character Recognition (OCR) technology, specifically **EasyOCR** and **Tesseract OCR**, to scan images for sensitive information, ensuring robust data privacy and protection.
