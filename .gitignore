@@ -1,4 +1,6 @@
-Dockerfile
+# Dockerfile
+*docker*
+
 # Django project files
 *.pyc
 *.pyo
@@ -10,6 +12,7 @@ __pycache__/
 
 # Media files
 /media/
+demo/
 
 # Environment variables
 .env
