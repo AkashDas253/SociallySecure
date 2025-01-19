@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Scan Result</h2>
+
+    <h3>Processed Image:</h3>
+    <img src="data:image/png;base64,{{ processed_image }}" alt="Processed Image">
+
+    <h3>Matching Words:</h3>
+    <ul>
+        {% for word in matched_words %}
+            <li>{{ word.found_word }}: {{ word.credential }} ({{ word.match_percentage }}%)</li>
+        {% empty %}
+            <li>No matching words found.</li>
+        {% endfor %}
+    </ul>
+
+    <h3>Unmatched Words:</h3>
+    <ul>
+        {% for word in unmatched_words %}
+            <li>{{ word }}</li>
+        {% empty %}
+            <li>All words matched with credentials.</li>
+        {% endfor %}
+    </ul>
+
+    <a href="{% url 'scan_image' %}">Scan another image</a>
+{% endblock %}
