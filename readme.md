@@ -14,15 +14,15 @@ The application allows users to scan documents and compare the text found in the
 
 ## Tech Stack
 
-- **Frontend:**: HTML, CSS, JavaScript
+- **Frontend:** HTML, CSS, JavaScript
 
-- **Backend:**: Django, Django REST Framework, Python
+- **Backend:** Django, Django REST Framework, Python
 
-- **Databases:**: SQLite for development
+- **Databases:** SQLite for development
 
-- **Libraries:**: OpenCV, EasyOCR, Tesseract OCR, NumPy, Pandas
+- **Libraries:** OpenCV, EasyOCR, Tesseract OCR, NumPy, Pandas
 
-- **Tools:**: Git, GitHub, VS Code
+- **Tools:** Git, GitHub, VS Code
 
 ## Installation
 
