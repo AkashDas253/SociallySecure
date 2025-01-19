@@ -56,7 +56,29 @@ def logout_view(request):
 # Dashboard view showing the user's credentials
 @login_required
 def dashboard_view(request):
+    # Fetch credentials for the logged-in user
     credentials = Credential.objects.filter(user=request.user)
+
+    # If no credentials are found, display a message
     if not credentials:
         messages.info(request, "You have no credentials saved.")
-    return render(request, 'credentials/dashboard.html', {'credentials': credentials})
+
+    # Decrypt each credential before passing to the template
+    decrypted_credentials = []
+    for credential in credentials:
+        try:
+            # Decrypt the credential value
+            decrypted_value = credential.decrypt_credential()
+        except Exception as e:
+            # In case of any error during decryption, log it or add a message
+            decrypted_value = "Error decrypting credential"  # Placeholder message in case of error
+            print(f"Error decrypting credential: {e}")  # Optionally log the error
+
+        # Append decrypted data to the list
+        decrypted_credentials.append({
+            'created_at': credential.created_at,
+            'credential_value': decrypted_value  # Decrypted value for display
+        })
+
+    # Render the template with decrypted credentials
+    return render(request, 'credentials/dashboard.html', {'credentials': decrypted_credentials})
