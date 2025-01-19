@@ -8,14 +8,14 @@ from .models import Credential
 # Registration view
 def register_view(request):
     if request.user.is_authenticated:
-        return redirect('dashboard')  # Redirect if the user is already logged in
+        return redirect('credentials:dashboard')  # Redirect if the user is already logged in
 
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
         if form.is_valid():
             form.save()
             messages.success(request, 'Registration successful. You can now log in.')
-            return redirect('login')
+            return redirect('credentials:login')  # Use namespace for redirect
     else:
         form = UserCreationForm()
 
@@ -24,7 +24,7 @@ def register_view(request):
 # Login view
 def login_view(request):
     if request.user.is_authenticated:
-        return redirect('dashboard')  # Redirect if user is already logged in
+        return redirect('credentials:dashboard')  # Redirect if user is already logged in
 
     if request.method == 'POST':
         form = AuthenticationForm(request, data=request.POST)
@@ -35,7 +35,7 @@ def login_view(request):
             if user is not None:
                 login(request, user)
                 messages.success(request, f'Welcome, {username}! You are now logged in.')
-                next_url = request.GET.get('next', 'dashboard')  # Redirect to 'next' URL if available
+                next_url = request.GET.get('next', 'credentials:dashboard')  # Redirect to 'next' URL if available
                 return redirect(next_url)
             else:
                 messages.error(request, 'Invalid username or password.')
@@ -51,7 +51,7 @@ def logout_view(request):
     if request.user.is_authenticated:
         logout(request)
         messages.success(request, 'You have been logged out.')
-    return redirect('login')
+    return redirect('credentials:login')  # Use namespace for redirect
 
 # Dashboard view showing the user's credentials
 @login_required

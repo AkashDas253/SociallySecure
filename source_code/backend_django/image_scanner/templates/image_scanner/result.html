@@ -24,5 +24,11 @@
         {% endfor %}
     </ul>
 
-    <a href="{% url 'scan_image' %}">Scan another image</a>
+    <button onclick="redirectToScan()">Scan another image</button>
+
+    <script>
+        function redirectToScan() {
+            window.location.href = "{% url 'image_scanner:scan_image' %}";
+        }
+    </script>
 {% endblock %}

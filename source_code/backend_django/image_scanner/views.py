@@ -1,9 +1,9 @@
 import base64
-from io import BytesIO
 from PIL import Image
+from io import BytesIO
 from django.shortcuts import render
 from .forms import ImageScanForm
-from .utils import process_image  
+from .utils import process_image
 
 def scan_image_view(request):
     if request.method == 'POST':
